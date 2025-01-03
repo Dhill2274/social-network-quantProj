@@ -1,0 +1,104 @@
+\documentclass[8pt]{article}
+\usepackage{multicol, caption}
+\usepackage{cases}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{algorithm,algpseudocode}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=2.54cm,right=2.54cm,marginparwidth=.75cm]{geometry}
+\begin{document}
+\fancyhead[OH]{\textbf{The performance of new graduates}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\title{Creative App Name}
+\author{A UoB Student}
+\date{Univerity of Bristol}
+\maketitle
+
+\lstset{style=mystyle}
+\begin{multicols}{2}
+[
+]
+\section{Setup}
+To make our environment we run
+\lstinputlisting[language=Octave]{setup.m}
+We can then run
+\lstinputlisting[language=Octave]{zoo.m}
+We install X with:
+\lstinputlisting[language=Octave]{topics.m}
+
+\section{Project Overview }
+\subsection{Outline}
+This project is a social media network where users can create accounts and make friends with other users on the platform, send messages to them and view messages sent to them. The admin account is represented as a sponsorship account with the
+ special privilege of being able to see the most influential accounts (accounts with the most followers). This is done using the Quantum Approximate Optimization Algorithm to find the minimum vertex cover over the social network.
+ As a result, the sponsorship account can send promotional messages to these users to promote products to their followers.
+
+\lstinputlisting[language=Octave]{producer.m}
+\lstinputlisting[language=Octave]{consumer.m}
+
+\begin{Figure}
+ \centering
+ \includegraphics[width=\linewidth]{image100.png}
+ \captionof{figure}{Screenshot of the graph}
+\end{Figure}
+
+\subsection{Justification for Design Choices}
+\begin{itemize}
+  \item The social network is modeled as a graph where nodes represent users and edges represent friendships. Rustworkx provides an efficient way to manage and visualize this graph structure.
+  \item The Quantum Approximate Optimization Algorithm is used to find the minimum vertex cover, which identifies the smallest subset of users that cover all friendships. These accounts are the most influential in the network.
+  \item The admin focuses on targeting influential users to promote products, the admin isn't allowed to see all the accounts in the network nor broadcast to all accounts in the network.
+  \item Users can communicate directly with their friends or broadcast messages to all their connections, fostering engagement.
+\end{itemize}
+
+\section{Explanation of the Code}
+In the code, users are nodes, and friendships are edges and each user has an associated dictionary in user_data to store their friends and messages. 
+New users can be added dynamically via add_user and they can form friendships via add_friendships, which are bidirectional edges in the graph. Users can also send direct messages via the send_message method to friends or broadcast messages to all their friends.
+The admin can view influential accounts and send messages to users.
+
+\subsection{Explanation of the Algorithm}
+The qaoa_min_vertex_cover function uses Qiskit's QAOA to find the Minimum Vertex Cover. Constraints ensure every edge (friendship) is covered by at least one user, where each user is represented as a binary variable ($x_i$) indicating inclusion in the vertex cover
+
+\begin{Figure}
+ \centering
+ \includegraphics[width=\linewidth]{image100.png}
+ \captionof{figure}{Bitstring probabilities}
+\end{Figure}
+
+\section{Other code}
+\subsection{sub other code}
+
+\section{key take aways}
+\end{multicols}
+
+\end{document}
